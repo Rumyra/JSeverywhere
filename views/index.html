@@ -66,7 +66,7 @@
         <section>
           <h2>Quick run down?</h2>
           <aside class="notes">
-            <p>What can I say - shall we do a quick run down?</p>
+            <p>What can I say - shall we do a brief history of javascript?</p>
             <p>Created in 10 days in May 1995 by Brendan Eich</p>
             <p>Stuff happened</p>
           </aside>
@@ -90,7 +90,7 @@
 
         <section data-background="public/aircraft.png">
           <aside class="notes">
-            <p>Node servers on an aircraft - this is Reaktor - a company serving in flight experiences via an onboard node server for Finair</p>
+            <p>Node servers on an aircraft - this is a company called Reaktor - they built an in flight experiences via an onboard node server for Finair</p>
           </aside>
         </section>
 
@@ -115,24 +115,25 @@
 
         <section data-background="public/roland808.png">
           <aside class="notes">
-            <p>of</p>
+            <p>these</p>
           </aside>
         </section>
 
         <section data-background="public/viktor.png">
           <aside class="notes">
-            <p>the</p>
+            <p>synth</p>
           </aside>
         </section>
 
         <section data-background="public/html909.png">
           <aside class="notes">
-            <p>synths</p>
+            <p>tha</p>
           </aside>
         </section>
 
         <section data-background="public/mod.png">
           <aside class="notes">
+            <p>sisers</p>
             <p>They're all linked to at the end of these slides and I'll flurry link them after too - they're amazing - true engineering.</p>
           </aside>
         </section>
@@ -153,7 +154,7 @@
           <h2 style="color:white;">Dinosaurs</h2>
           <p><a style="color:white;" href="http://www.blackgangchine.com/">blackgangchine.com/</a></p>
           <aside class="notes">
-            <p>I did a short version of this talk at a local evening event a couple of months ago, and another friend was talking before me about how he had helped on a project hacking big mechanical dinosaurs. Sounds crazy right.</p>
+            <p>Dinosaurs - one of my friends hacks big mechanical dinosaurs. Sounds crazy right.</p>
             <p>We have this island of the south coast of England and there’s a park there, where the owner has just shipped in these huge dinosaurs. They all have mechanical skeletons which are control by raspberry pis. These in turn can be programmed with javascript. And so we were thinking of ways for these huge dinosaurs to be more crowd interactive. Having a motion or infrared sensor so they turn when they detect walking past…</p>
           </aside>
         </section>
@@ -171,7 +172,6 @@
           <img class="plain" src="public/ponies.png" />
           <aside class="notes">
             <p>And it's not just this library, this framework, this node module... this browser thing we have - this has been rocking it the past few years as well! Even IE has upped it's game with Edge. Who'd a thunk.</p>
-            <p>I mean we got...</p>
           </aside>
         </section>
 
@@ -204,6 +204,9 @@
             <p>Bluetooth</p>
             <p>NFC</p>
           </div>
+          <aside class="notes">
+            <p>I mean we got...</p>
+          </aside>
         </section>
 
         <section data-background="public/ohyes.gif">
@@ -221,15 +224,17 @@
             <source src="/public/llama.mp3" type="audio/mp3" />
           </audio>
           <aside class="notes">
-            Winamp was the mp3 player of choice
-            We're talking back when Napster was illegal
-            My favourtie thing - Visualizer
+            <p>If you don't know</p>
+            <p>Winamp was the mp3 player of choice
+            We're talking back when Napster was illegal</p>
+            <p>My favourtie thing - Visualizer</p>
           </aside>
         </section>
 
         <section data-background="/public/winampViz.jpg">
           <aside class="notes">
-            <p>Winamp visualise inspired me - I used to go into clubs & venues with projector.</p>
+            <p>Winamp visualise inspired me</p>
+            <p>I used to go into clubs & venues with projector.</p>
             <p>So I got to thinking - could I recreate my native VJ software in a browser</p>
           </aside>
         </section>
@@ -259,6 +264,7 @@
     iterations: 1
 });</code></pre>
           <aside class="notes">
+            <p>Explain code</p>
             <p>Animation API - covers css transistions animations and svg. It comes with both the animatable keyframes part of css animations but also a timing layer. Much more control over event snad timelines - something css animations lacked.</p>
           </aside>
         </section>
@@ -267,7 +273,8 @@
 
         <section data-state="show-talk">
           <h2>Web Audio API</h2>
-          <p>Input node - sound in</p>
+          <p>Concept of Nodes</p>
+          <p class="fragment roll-in">Input node</p>
           <p class="fragment roll-in">Modification and anlyser nodes</p>
           <p class="fragment roll-in">Output node - sound out (usually speakers)</p>
           <aside class="notes">
@@ -275,16 +282,39 @@
           </aside>
         </section>
 
+        <section data-state="play-keyboard">
+          <h2>Web Audio API</h2>
+<pre><code data-trim>// input nodes
+// with oscillator
+var oscillator = audioAPI.createOscillator();
+
+// grab from audio or video element
+var mediaSource = audioAPI.createMediaElementSource(element);
+
+// take it from a stream source
+var streamSource = audioAPI.createMediaStreamSource(stream);
+
+// request file & load into buffer
+var bufferSource = audioAPI.createBufferSource();
+var request = new XMLHttpRequest();
+...
+          </code></pre>
+          <aside class="notes">
+
+          </aside>
+        </section>
+
         <section>
-          <pre><code data-trim contenteditable>
-//Control volume
-myAudioContext.createGain();
+          <h2>Web Audio API</h2>
+          <pre><code data-trim contenteditable>// modification nodes
+// control volume
+audioAPI.createGain();
 
-//Create filter
-myAudioContext.createBiquadFilter();
+// create filter
+audioAPI.createBiquadFilter();
 
-//Create sound
-myAudioContext.createOscillator();
+// output node
+soundFile.connect(audioAPI.destination);
           </code></pre>
 
           <aside class="notes">
@@ -294,10 +324,9 @@ myAudioContext.createOscillator();
 
         <section>
           <h2>Analysing</h2>
-          <p class="fragment roll-in">We can do that :D</p>
-          <pre class="fragment roll-in"><code data-trim contenteditable>
-//create instance
-var analyser = myAudioContext.createAnalyser();
+          <p>We can do that :D</p>
+          <pre><code data-trim contenteditable>// analyser node
+var analyser = audioAPI.createAnalyser();
 
 //get data
 analyser.getByteFrequencyData();
@@ -333,7 +362,18 @@ for (var i=0; i&lt;totalLights; i){
         </section>
         
         <section>
-          <h2>Media Stream API (getUserMedia)</h2>
+          <h2>Media Stream API</h2>
+          <p>(getUserMedia)</p>
+          <pre><code>// pipe in analysing to getUserMedia
+  navigator.getUserMedia(
+    {audio:true},
+    gotStream,
+    function(err) {
+      console.log("The following error occured: " + err);
+    } 
+  );
+}, false );
+          </code></pre>
           <aside class="notes">
             <p>Picks up on devices camera and microphone</p>
           </aside>
@@ -361,10 +401,9 @@ for (var i=0; i&lt;totalLights; i){
 
         <section>
           <h2>Affordable Hardware</h2>
-          <p></p>
           <aside class="notes">
             <p>So it's these controllers that have really got attention. We're talking affordable hardware, accessible easily from the browser with a really nice data protocol - which we've already seen</p>
-            <p>So what else can we do?</p>
+            <p>Something else I should explain about MIDI is it's mis understood</p>
           </aside>
         </section>
 
@@ -382,6 +421,14 @@ for (var i=0; i&lt;totalLights; i){
         </section>
         <section>
           <h2><span class="faded">Music Instrument</span> Digital Interface</h2>
+          <aside class="notes">
+            <p>But the key, the bit that’s really MIDI and really interesting is this bit “Digital Interface”. MIDI is a digital interface, at it’s basic it’s a data protocol for MIDI enabled hardware & software to be compatible with other MIDI enabled hardware & software.</p>
+            <p>Show you</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Core of MIDI -> Messages</h2>
           <aside class="notes">
             <p>But the key, the bit that’s really MIDI and really interesting is this bit “Digital Interface”. MIDI is a digital interface, at it’s basic it’s a data protocol for MIDI enabled hardware & software to be compatible with other MIDI enabled hardware & software.</p>
             <p>Show you</p>
@@ -425,13 +472,105 @@ function onMIDISuccess(midiControl) {
           </code></pre>
           <p>So far only Chrome & Opera</p>
           <aside class="notes">
+            <p>Exact data you get with web MIDI api - just numbers</p>
             <p>You make sure it’s avail, listen for attached device, when plugged in you can receive these afore mentioned messages. All I’m doing here is logging those messages - you can do whatever you want with them. Notice the sysex false - this is related to system messages and I will get back to that in a moment.</p>
             <p>Now there’s a window of opportunity - there’s plenty of stuff we can start coding with that!</p>
-            <p>But what are these values?</p>
           </aside>
         </section>
 
-        
+        <section data-background="public/icon.jpg">
+          <aside class="notes">
+            <p>So this is my midi controller of choice</p>
+            <p>The reason is because I like to take everything that you've jsut seen - but have two screens and mix them together</p>
+          </aside>
+        </section>
+
+        <section data-background="public/iconside.jpg">
+          <aside class="notes">
+            <p>One side controls one screen and one side is the other screen</p>
+            <p>We can use the buttons, sliders etc... to control what is shown on each screen - whether that be lights like you've seen or video/pictures/3d etc...</p>
+            <p>The screens them selves in the code are just divs - so you can put in them what ever you can think to code</p>
+          </aside>
+        </section>
+
+        <section data-background="public/iconcross.jpg">
+          <aside class="notes">
+            <p>Now this is the important part - this is the cross fader.</p>
+            <p>This doesn't just fade inbetween the two divs - this also picks up on the audio frequency and 'mixes' to the sound</p>
+            <p>The best way for me to show you is for me to demo - but you're not gonna see what I'm doing so you're going to have to cope with my comentary.</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>VJ Software Demo</h2>
+          <p><a href="http://github.com/Rumyra">Code is on github.com/Rumyra</a></p>
+          <aside class="notes">
+            <p>Run this from Canary Ruth</p>
+            <p>So great - I can infact recreate a piece of software I had around at uni - in a browser that I used to need quite a hefty old set up for. But what about more - I mean things have changed - tech has got a lot smaller and a lot more portable.</p>
+            <p>Well if you're anything like me you're going to take things a little further</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>So I could have stopped there...</h2>
+          <aside class="notes">
+            <p>So I could have stopped there - but I didn't. See things have changed since I was at uni - everything is a lot smaller now.</p>
+          </aside>
+        </section>
+
+        <section data-background="public/bag.jpg">
+          <aside class="notes">
+            <p>So I took a laptop bag</p>
+          </aside>
+        </section>
+
+        <section data-background="public/scissors.jpg">
+          <aside class="notes">
+            <p>scissors</p>
+          </aside>
+        </section>
+
+        <section data-background="public/mdf.jpg">
+          <aside class="notes">
+            <p>MDF and a strap</p>
+          </aside>
+        </section>
+
+        <section data-background="public/projector.jpg">
+          <aside class="notes">
+            <p>mini projector</p>
+          </aside>
+        </section>
+
+        <section data-background="public/laptop.jpg">
+          <aside class="notes">
+            <p>laptop</p>
+          </aside>
+        </section>
+
+        <section data-background="public/icon.jpg">
+          <aside class="notes">
+            <p>MIDI controller</p>
+          </aside>
+        </section>
+
+        <section data-background="public/sew.jpg">
+          <aside class="notes">
+            <p>Didi some sewing</p>
+          </aside>
+        </section>
+
+        <section data-background="public/strapped.jpg">
+          <aside class="notes">
+            <p>et voila - a portable VJ kit - </p>
+          </aside>
+        </section>
+
+        <section data-background="public/gear.jpg">
+          <aside class="notes">
+            <p>gaffa tape</p>
+          </aside>
+        </section>
 
         <section data-background="public/me.jpg">
           <h2 style="color:white;">Take it to the streets!</h2>
@@ -443,16 +582,18 @@ function onMIDISuccess(midiControl) {
         </section>
 
         <section data-background="public/ohyes.gif">
-          <h2>Javascript is Everywhere!</h2>
-          <div class="fragment fade-in">
-            <p>Thanks!</p>
-            <p>@rumyra</p>
-            <p>I'll tweet the slides</p>
-          </div>
+          <h2 style="color:white;">Javascript is Everywhere!</h2>
+          
           <aside class="notes">
             <p>We're so comfortable now with our whole dev stack being JS - but it's not just a software environment anymore.</p>
             <p>Tim and I will be around for the next two days with all of our equipment VJing so come and say hello, come and play with our MIDI hardware - can I say that. It’s been an absolute pleasure I really hope I have inspired you today. Thank you.</p>
           </aside>
+        </section>
+
+        <section>
+            <p>Thanks!</p>
+            <p>@rumyra</p>
+            <p>I'll tweet the slides</p>
         </section>
 
         <section>
